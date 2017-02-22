@@ -91,6 +91,14 @@ namespace AsyncProgramming
         Console.WriteLine(Thread.CurrentThread.Name);
       });
       #endregion
+
+
+      #region Opting in to a PLINQ Query
+      //int[] modThreeIsZero = (from num in source.AsParallel()
+       //                       where num % 3== 0
+         //                     orderby num descending
+           //                   select num).ToArray();
+      #endregion
       Console.ReadKey();
     }
 
