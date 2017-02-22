@@ -57,7 +57,6 @@ namespace AsyncProgramming
       Console.WriteLine("***** The Amazing Thread App *****\n");
       Console.Write("Do you want [1] or [2] threads? ");
       string threadCount = Console.ReadLine();
-     
       // Display Thread info.
       Console.WriteLine("-> {0} is executing Main()",Thread.CurrentThread.Name);
       // Make worker class.
@@ -77,6 +76,20 @@ namespace AsyncProgramming
       goto case "1";
       }
 
+      #endregion
+
+      #region task parallel library
+      Thread t = Thread.CurrentThread;
+      t.Name = "Thread1";
+      Console.WriteLine(Thread.CurrentThread.Name);
+
+      Task.Factory.StartNew(() =>
+      {
+        Thread g = Thread.CurrentThread;
+        g.Name = "Thread2";
+        Console.WriteLine("Hello");
+        Console.WriteLine(Thread.CurrentThread.Name);
+      });
       #endregion
       Console.ReadKey();
     }
