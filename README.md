@@ -34,3 +34,9 @@ Background threads (sometimes called daemon threads) are viewed by the CLR as ex
 
 At this point in the chapter, you have examined two programming techniques (using asynchronous delegates and via the members of System.Threading) that allow you to build multithreaded software. Recall that both of these approaches will work under any version of the .NET platform. Beginning with the release of .NET 4.0, Microsoft introduced a new approach to multithreaded application development using a parallel programming library termed the Task Parallel Library (TPL). Using the types of System.Threading.Tasks, you can build fine-grained, scalable parallel code without having to work directly with threads or the thread pool. This is not to say, however, that you will not use the types of System.Threading when you use the TPL. In reality, these two threading toolkits can work together quite naturally. This is especially true in that the System.Threading namespace still provides a majority of the synchronization primitives you examined previously (Monitor, Interlocked, and so forth). This being said, you will quite likely find that you will favor working with the TPL rather than the original System.Threading namespace, given that the same set of tasks can be performed in a more
 straightforward manner.
+
+----
+
+### The System.Threading.Tasks Namespace
+
+Collectively speaking, the types of System.Threading.Tasks are referred to as the Task Parallel Library. The TPL will automatically distribute your application’s workload across available CPUs dynamically, using the CLR thread pool. The TPL handles the partitioning of the work, thread scheduling, state management, and other low-level details. The end result is that you can maximize the performance of your .NET applications, while being shielded from many of complexities of directly working with threads.
