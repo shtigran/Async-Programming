@@ -28,3 +28,9 @@ Now that you have seen how to programmatically create new threads of execution u
 Foreground threads have the ability to prevent the current application from terminating. The CLR will not shut down an application (which is to say, unload the hosting AppDomain) until all foreground threads have ended. 
 Background threads (sometimes called daemon threads) are viewed by the CLR as expendable paths of execution that can be ignored at any point in time (even if they are currently laboring over some unit of work). Thus, if all foreground threads have terminated, any and all background threads are automatically killed when the application domain unloads.
 
+----
+
+### Parallel Programming Using the Task Parallel Library
+
+At this point in the chapter, you have examined two programming techniques (using asynchronous delegates and via the members of System.Threading) that allow you to build multithreaded software. Recall that both of these approaches will work under any version of the .NET platform. Beginning with the release of .NET 4.0, Microsoft introduced a new approach to multithreaded application development using a parallel programming library termed the Task Parallel Library (TPL). Using the types of System.Threading.Tasks, you can build fine-grained, scalable parallel code without having to work directly with threads or the thread pool. This is not to say, however, that you will not use the types of System.Threading when you use the TPL. In reality, these two threading toolkits can work together quite naturally. This is especially true in that the System.Threading namespace still provides a majority of the synchronization primitives you examined previously (Monitor, Interlocked, and so forth). This being said, you will quite likely find that you will favor working with the TPL rather than the original System.Threading namespace, given that the same set of tasks can be performed in a more
+straightforward manner.
