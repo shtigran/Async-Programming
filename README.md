@@ -60,3 +60,18 @@ Since the release of .NET 4.5, the C# programming language (and for that matter,
 
 The async keyword of C# is used to qualify that a method, lambda expression, or anonymous method should be called in an asynchronous manner automatically. Yes, it’s true. Simply by marking a method with the async modifier, the CLR will create a new thread of execution to handle the task at hand. Furthermore, when you are calling an async method, the await keyword will automatically pause the current thread from any further activity until the task is complete, leaving the calling thread free to continue on its merry way.
 
+
+----
+
+### Summarize the key points
+Methods (as well as lambda expressions or anonymous methods) can be markedwith the async keyword to enable the method to do work in a nonblocking manner.
+
+Methods (as well as lambda expressions or anonymous methods) marked with theasync keyword will run in a blocking manner until the await keyword is encountered.
+
+A single async method can have multiple await contexts. When the await expression is encountered, the calling thread is suspended until
+the awaited task is complete. In the meantime, control is returned to the caller of the method.
+
+The await keyword will hide the returned Task object from view, appearing to directly return the underlying return value. Methods with no return value simply return void.
+
+As a naming convention, methods that are to be called asynchronously should be marked with the Async suffix.
+
