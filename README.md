@@ -54,3 +54,9 @@ At runtime, PLINQ analyzes the overall structure of the query, and if the query 
 To be sure, building, debugging,and understanding complex multithreaded applications is a challenge in any framework. While the TPL, PLINQ, and the delegate type can simplify matters to some extent (especially when compared toother platforms and languages), developers are still required to be fairly savvy with the ins and outs of various advanced techniques.
 Since the release of .NET 4.5, the C# programming language (and for that matter, the VB programming language) has been updated with two new keywords that further simplify the process of authoring asynchronous code. In contrast to all the examples in here, when you use the new async and await keywords, the compiler will generate a good deal of threading code on your behalf, using numerous members of the System.Threading and System.Threading.Tasks namespaces.
 
+----
+
+### A First Look at the C# async and await Keywords
+
+The async keyword of C# is used to qualify that a method, lambda expression, or anonymous method should be called in an asynchronous manner automatically. Yes, it’s true. Simply by marking a method with the async modifier, the CLR will create a new thread of execution to handle the task at hand. Furthermore, when you are calling an async method, the await keyword will automatically pause the current thread from any further activity until the task is complete, leaving the calling thread free to continue on its merry way.
+
