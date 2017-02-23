@@ -48,3 +48,30 @@ Collectively speaking, the types of System.Threading.Tasks are referred to as th
 To wrap up your look at the TPL, be aware that there is another way you can incorporate parallel tasks into your .NET applications. If you choose, you can use a set of extension methods, which allow you to construct a LINQ query that will perform its workload in parallel (if possible). Fittingly, LINQ queries that are designed to run in parallel are termed PLINQ queries. Like parallel code authored using the Parallel class, PLINQ has the option of ignoring your request to process the collection in parallel if need be. The PLINQ framework has been optimized in numerous ways, which includes determining whether a query would, in fact, perform faster in a synchronous manner.
 At runtime, PLINQ analyzes the overall structure of the query, and if the query is likely to benefit from parallelization, it will run concurrently. However, if parallelizing a query would hurt performance, PLINQ just runs the query sequentially. If PLINQ has a choice between a potentially expensive parallel algorithm or an inexpensive sequential algorithm, it chooses the sequential algorithm by default.
 
+----
+
+### Asynchronous Calls with the async Keyword
+To be sure, building, debugging,and understanding complex multithreaded applications is a challenge in any framework. While the TPL, PLINQ, and the delegate type can simplify matters to some extent (especially when compared toother platforms and languages), developers are still required to be fairly savvy with the ins and outs of various advanced techniques.
+Since the release of .NET 4.5, the C# programming language (and for that matter, the VB programming language) has been updated with two new keywords that further simplify the process of authoring asynchronous code. In contrast to all the examples in here, when you use the new async and await keywords, the compiler will generate a good deal of threading code on your behalf, using numerous members of the System.Threading and System.Threading.Tasks namespaces.
+
+----
+
+### A First Look at the C# async and await Keywords
+
+The async keyword of C# is used to qualify that a method, lambda expression, or anonymous method should be called in an asynchronous manner automatically. Yes, it’s true. Simply by marking a method with the async modifier, the CLR will create a new thread of execution to handle the task at hand. Furthermore, when you are calling an async method, the await keyword will automatically pause the current thread from any further activity until the task is complete, leaving the calling thread free to continue on its merry way.
+
+
+----
+
+### Summarize the key points
+Methods (as well as lambda expressions or anonymous methods) can be markedwith the async keyword to enable the method to do work in a nonblocking manner.
+
+Methods (as well as lambda expressions or anonymous methods) marked with theasync keyword will run in a blocking manner until the await keyword is encountered.
+
+A single async method can have multiple await contexts. When the await expression is encountered, the calling thread is suspended until
+the awaited task is complete. In the meantime, control is returned to the caller of the method.
+
+The await keyword will hide the returned Task object from view, appearing to directly return the underlying return value. Methods with no return value simply return void.
+
+As a naming convention, methods that are to be called asynchronously should be marked with the Async suffix.
+
