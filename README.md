@@ -75,3 +75,5 @@ The await keyword will hide the returned Task object from view, appearing to dir
 
 As a naming convention, methods that are to be called asynchronously should be marked with the Async suffix.
 
+  - [See the examples of each of asynchronous types here]
+  [See the examples of each of asynchronous types here]: <https://github.com/shtigran/Async-Programming/blob/master/AsyncProgramming/AsyncProgramming/Program.cs>
